@@ -1,0 +1,45 @@
+global function ClientChatCommands_Init
+global function IsClientChatCommandRegistered
+global function AddClientChatCommandCallback
+global function RemoveClientChatCommandCallback
+
+
+table< string, void functionref(entity, array<string>) > ChatCommandCallbacks = {}
+
+void function ClientChatCommands_Init() {
+    AddCallback_OnReceivedSayTextMessage(OnReceivedSayTextMessage)
+}
+
+ClClient_MessageStruct function OnReceivedSayTextMessage(ClClient_MessageStruct message)
+{
+    entity player = message.player
+    string chatText = message.message
+
+    array<string> words = split(chatText, " ")
+    string commandKey = words[0]
+
+    if( commandKey in ChatCommandCallbacks ) {
+        array<string> args = words.slice(1)
+        thread ChatCommandCallbacks[commandKey](player, args)
+    }
+
+    return message
+}
+
+bool function IsClientChatCommandRegistered(string command) {
+    return (command in ChatCommandCallbacks)
+}
+
+void function AddClientChatCommandCallback(string command, void functionref(entity player, array<string> args) func) {
+    if( command in ChatCommandCallbacks )
+        return
+    if ( func == null )
+        return
+    ChatCommandCallbacks[command] <- func
+}
+
+void function RemoveClientChatCommandCallback(string command) {
+    if( command in ChatCommandCallbacks ) {
+        delete ChatCommandCallbacks[command]
+    }
+}

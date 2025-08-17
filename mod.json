@@ -1,0 +1,123 @@
+{
+	"Name": "Leaf",
+	"Description": "",
+	"Version": "1.0.0",
+	"LoadPriority": 2,
+	"ConVars": [
+		{
+			"Name": "AdminIDs",
+			"DefaultValue": "111111111,222222222"
+		}
+	],
+	"Scripts": [
+		{
+			"Path": "/callback/ServerChatCommands.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "ServerChatCommands_Init"
+			}
+		},
+		{
+			"Path": "/callback/ClientChatCommands.nut",
+			"RunOn": "CLIENT && MP",
+			"ClientCallback": {
+				"After": "ClientChatCommands_Init"
+			}
+		},
+		{
+			"Path": "Leaf.nut",
+			"RunOn": "MP"
+		},
+		{
+			"Path": "command/chat/tp.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "ChatCommand_Tp_Init"
+			}
+		},
+		{
+			"Path": "command/chat/sv_cheats.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "ChatCommand_SvCheats_Init"
+			}
+		},
+		{
+			"Path": "command/chat/god.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "ChatCommand_God_Init"
+			}
+		},
+		{
+			"Path": "command/chat/set_team.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "ChatCommand_SetTeam_Init"
+			}
+		},
+		{
+			"Path": "command/chat/kill.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "ChatCommand_Kill_Init"
+			}
+		},
+		{
+			"Path": "command/chat/create_boss.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "ChatCommand_CreateBoss_Init"
+			}
+		},
+		{
+			"Path": "command/chat/player.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "ChatCommand_Player_Init"
+			}
+		},
+		{
+			"Path": "command/chat/noclip.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "ChatCommand_Noclip_Init"
+			}
+		},
+		{
+			"Path": "command/chat/ban.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "ChatCommand_Ban_Init"
+			}
+		},
+		{
+			"Path": "command/chat/chat.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "ChatCommand_Chat_Init"
+			}
+		},
+		{
+			"Path": "command/chat/server_stop.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "ChatCommand_ServerStop_Init"
+			}
+		},
+		{
+			"Path": "command/chat/hide.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "ChatCommand_Hide_Init"
+			}
+		},
+		{
+			"Path": "command/chat/show.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "ChatCommand_Show_Init"
+			}
+		}
+	]
+}
